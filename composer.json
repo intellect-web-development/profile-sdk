@@ -1,6 +1,6 @@
 {
     "name": "intellect-web-development/profile-sdk",
-    "description": "HTTP-клиент универсального сервиса Profile",
+    "description": "HTTP-клиент и Messenger-контракты универсального сервиса Profile",
     "type": "library",
     "license": "MIT",
     "autoload": {
@@ -16,7 +16,8 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=8.3",
-        "symfony/http-client": "^7.1 || ^8.0"
+        "symfony/http-client": "^7.1 || ^8.0",
+        "symfony/messenger": "^7.1 || ^8.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5"

@@ -1,6 +1,8 @@
 # profile-sdk
 
-HTTP-клиент универсального сервиса [Profile](../profile). Пакет `intellect-web-development/profile-sdk`, namespace `IWD\ProfileSdk\`.
+HTTP-клиент и контракты шины универсального сервиса [Profile](../profile). Пакет `intellect-web-development/profile-sdk`, namespace `IWD\ProfileSdk\`.
+
+Чеклист подключения продукта: корневой [`../profile/INTEGRATION.md`](../profile/INTEGRATION.md).
 
 ```php
 $client = new ProfileClient($httpClient, baseUrl: 'http://backend-profile.localhost', token: $personalJwt);
@@ -11,4 +13,14 @@ $client->edit(userId: 42, name: 'Анна', gender: Gender::Female); // созд
 
 Токен — персональный JWT системы (scope `profile:clients:read`, `profile:clients:write`, аудитория `profile`), его выдаёт integration-registry. Сервис отдаёт только клиентов системы из claim `sub`.
 
-Подключение в продукте: vcs-репозиторий в `composer.json` и зависимость `intellect-web-development/profile-sdk` нужной версии. Path-репозиторий и копия в `packages/` не используются.
+Сообщения Messenger (vhost `platform`):
+
+| Класс | `serializedTypeName` | Exchange |
+|-------|----------------------|----------|
+| `Message\Command\CreateClientMessage` | `profile.command.createClient` | `profile.commands` |
+| `Message\Event\ClientCreatedMessage` | `profile.event.clientCreated` | `profile.events` |
+| `Message\Event\ClientUpdatedMessage` | `profile.event.clientUpdated` | `profile.events` |
+
+Примеры wiring: [`examples/symfony/`](examples/symfony/).
+
+Подключение: vcs-репозиторий в `composer.json` и зависимость `intellect-web-development/profile-sdk`. Path-репозиторий и копия в `packages/` не используются. В `symfony-skeleton` пакет по умолчанию не подключён.

@@ -1,0 +1,9 @@
+# Фрагмент config/services.yaml продукта после opt-in Profile.
+# Полный чеклист: sibling profile/INTEGRATION.md
+
+services:
+    IWD\ProfileSdk\ProfileClient:
+        arguments:
+            $httpClient: '@http_client'
+            $baseUrl: '%env(PROFILE_BASE_URL)%'
+            $token: '%env(PLATFORM_SERVICE_TOKEN)%'

@@ -1,0 +1,28 @@
+# Фрагмент Resource/config/services/messenger.yaml продукта.
+# Публикация команд в Profile; очереди объявляет сервис-получатель (queues: false).
+
+framework:
+    messenger:
+        transports:
+            profile-commands-transport:
+                dsn: '%env(PLATFORM_MESSENGER_TRANSPORT_DSN)%'
+                retry_strategy:
+                    max_retries: 3
+                    delay: 5000
+                    multiplier: 3
+                options:
+                    exchange:
+                        name: profile.commands
+                        type: direct
+                    queues: false
+            # Подписка на адресные события (очередь {APP_SLUG}.profile, binding key = код Customer):
+            # profile-events-transport:
+            #     dsn: '%env(PLATFORM_MESSENGER_TRANSPORT_DSN)%'
+            #     options:
+            #         exchange:
+            #             name: profile.events
+            #             type: direct
+            #         queues:
+            #             '%env(APP_SLUG)%.profile':
+            #                 binding_keys: ['%env(APP_SLUG)%']
+        routing: { }
