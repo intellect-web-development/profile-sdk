@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Profile;
+namespace IWD\ProfileSdk\Examples\Symfony;
 
 use IWD\ProfileSdk\Gender;
 use IWD\ProfileSdk\ProfileClient;
@@ -13,7 +13,7 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
  * Пример адаптера продукта: единственная точка связи с Profile.
- * Скопировать в продукт при opt-in; домен ProfileClient не импортирует.
+ * В продукте копируйте в App\Common\Profile (или свой BC) при opt-in; домен ProfileClient не импортирует.
  */
 final readonly class ProfileGateway
 {
