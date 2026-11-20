@@ -13,7 +13,7 @@ use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 
 /**
  * Пример адаптера продукта: единственная точка связи с Profile.
- * В продукте копируйте в App\Common\Profile (или свой BC) при opt-in; домен ProfileClient не импортирует.
+ * В продукте копируйте в App\PlatformProjection\Profile (или свой BC) при opt-in; домен ProfileClient не импортирует.
  */
 final readonly class ProfileGateway
 {
